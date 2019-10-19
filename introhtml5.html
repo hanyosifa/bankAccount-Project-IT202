@@ -1,32 +1,123 @@
-!DOCTYPE html>
-<html>
-<head>
-</head>
-<body>
-    <header>
-         <nav>
-              <a href="#">Home</a>
-              <a href="https://www.w3schools.com/html/html5_semantic_elements.asp">About</a>
-              <a href="#?Contact">Contact</a>
-              <a href="article/1.html">First Article</a>
-         </nav>
-    </header>
-         <article>
-               This is my article
-              <section> This is section 1</section>
-              
-              <section></section>
-              <figure></figure>
-              <caption></caption>
-         
-         </article>
-         <svg/>
-         <canvas></canvas>
-         <audio></audio>
-         <video></video>
-     <footer></footer>    
-         
+<!DOCTYPE html>
 
+<html>
+
+<head>
+
+<script>
+
+	function queryParam(){
+
+		var params = new URLSearchParams(location.search);
+
+		if(params.has('page')){
+
+			var page = params.get('page');
+
+			var ele = document.getElementById(page);
+
+			if(ele){
+
+				let home = document.getElementById('home');
+
+				let about = document.getElementById('about');
+
+				home.style.display="none";
+
+				about.style.display = "none";
+
+				ele.style.display = "block";
+
+			}
+
+		}
+
+		else{
+
+			let home = document.getElementById('home');
+
+			home.style.display = "block";
+
+		}
+
+	}
+
+</script>
+
+</head>
+
+<body onload="queryParam();">
+
+	<header>
+
+		<nav>
+        <a href ="?page=home">Home</a>
+        <a href ="?page=about">About</a>
+			<!--Create route for Home-->
+
+			<!--Create route for About-->
+
+		</nav>
+
+	</header>
+
+	<div id="home">
+
+		This is home
+
+	</div>
+
+	<div id="about">
+
+		<!-- About page using HTML5 Semantics-->
+     <!--<section>
+           <h1>About</h1>
+             <p> Section is one of sementic elements in html5</p>
+     </section>
+     
+       <article>
+           <h1>Article Element</h1>
+             <p>ARticle element </p>
+       </article>-->
+       
+<main>
+  <section>
+    <article>
+      <header>
+        <h2>New HTML5 Elements</h2>
+        <p>by John </p>
+      </header>   
+        <p>HTML5 is new version of html. It came up with new elements such as:</p>
+        <p>  - Sementic elements(header, section, aside, footer, article).</p>
+        <p>  - Graphic elements like(i.g vsg, canvas).</p>
+        <p>  - Multimedia elements(i.g audio and video).</p>
+        <p>  - Attributes of form elements like(time, number, date, calendar, and range).</p>
+    </article>
+    <article>
+  </section>
+
+  <aside>
+    <header>
+      <h3>About New HTML5 Elements</h3>
+    </header>
+    <nav>
+      <ul>
+        <li> <a href="https://www.w3schools.com/html/html5_semantic_elements.asp"> Sementic Elements </a></li>
+        <li> <a href="https://www.w3schools.com/html/html5_canvas.asp"> Graphic Elements </a></li>
+        <li><a href="https://www.w3schools.com/html/html_media.asp"> Multimeia Elements </a></li>
+      </ul>
+    </nav>
+  </aside>
+  
+  <footer>
+    <p>Created by: Sifaw Amazig</p>
+    <p>Contact: <a href= "mailto:sifaw.amazig@gmail.com">sifaw.amazig@gmail.com </a> </p>
+  </footer>
+</main>
+
+     
+	</div>
 
 </body>
+
 </html>

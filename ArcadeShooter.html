@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<script>
+
+//modified from http://jsfiddle.net/bencentra/q1s8gmqv/?utm_source=website&utm_medium=embed&utm_campaign=q1s8gmqv
+
+var canvas;
+var context;
+var loop;
+var bullet;
+var bulletSize;
+var bulletSpeed;
+var square;
+var x = 50;
+var y = 100;
+var squareSize = 50;
+var squareSpeed = 50;
+
+var shooting = false;
+// enemy properties
+var enemies = [];
+var enemyX;
+var enemyY;
+var enemySize;
+var enemyBaseSpeed = 2;
+var enemySpeed;
+
+// Key Codes
+var UP = 38;
+var DOWN = 40;
+var space = 45;
+
+// Keep track of pressed keys
+
+var keys = {
+    UP: false,
+    DOWN: false
+};
+
+
+// Keep track of the score
+var Score = 0;
+var timeBetweenEnemies = 5 * 1000;
+var timeoutId = null;
+
+function init() {
+
+    canvas = document.getElementById("board");
+
+    if (canvas.getContext) {
+
+        context = canvas.getContext("2d");
+
+        square = makeSquare(50, canvas.height / 2 - 25, 50, 5);
+        bullet = makeSquare(0, 0, 10, 10)
+
+        ball = makeRect(0, 0, ballSize, ballSize, ballSpeed, '#000000');
+
+    }
+
+}
+
+
+
+// Create a square object - for shooter, bullet, etc
+
+function makeSquare(x, y, length, speed) {
+  return {
+    x: x,
+    y: y,
+    l: length,
+    s: speed,
+    draw: function() {
+      context.fillRect(this.x, this.y, this.l, this.l);
+    }
+  };
+}
+// function to make enemey
+function makeEnemy(){
+    enemyX = canvas.width; 
+    enemySize = Math.round((Math.random() * 15)) + 15;
+    enemyY = Math.round(Math.random() * (canvas.height - enemySize * 2)) + enemySize;
+    enemySpeed = Math.round(Math.random() * enemyBaseSpeed) + enemyBaseSpeed;
+    enemies.push(makeSquare(enemyX, enemyY, enemySize, enemySpeed));
+}
+
+}
+
+
+</script>
+
+</head>
+
+<body onload="init();">
+
+	<a href="http://bencentra.com/2017-07-11-basic-html5-canvas-games.html">Collection of Canvas based games by Ben Centra</a>
+
+	<main>
+
+	<main>
+
+		<canvas id="board" width="600px" height="600px" style="border: 1px solid black;">
+		</canvas>
+
+	</main>
+
+</body>
+
+</html>

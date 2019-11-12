@@ -1,27 +1,25 @@
 <?php
-require('config.php');
-$conn_string = "mysql:host=$host;dbname=$database;charset=utf8mb4";
-$db = new PDO($conn_string, $username, $password);
-if(isset($_POST['username']) && isset($_POST['password'])){
 
+if(isset($_POST['username']) && isset($_POST['password'])){
+      require('config.php');
+      $conn_string = "mysql:host=$host;dbname=$database;charset=utf8mb4";
+      $db = new PDO($conn_string, $username, $password);
       $user = $_POST['username'];
       $userpwd = $_POST['password'];
       
-
-     	$select_query = "select * FROM `TestUsers` where username = '$user' and pin = '$userpwd'";
-      $result = mysqli_query($db,$sql_query);
-      $row = mysqli_fetch_array($result);
-
-      if($row == 1){
-            echo "<script type='text/javascript'>alert('Login Credentials verified')</script>";
+     	$stmt= $db->prepare("select * FROM `TestUsers` where username = :username AND pin = :password");
+      $stmt->execute(array(":username"=>$user, ":password"=>$userpwd));
+      $result = $stmt->fetch(PDO::FETCH_ASSOC);
+      echo var_export($result, true);
+      if($result['pin'] == $userpwd){
+            echo $result['username'] . ", ";
+            echo "Login Credentials verified";
 
       }else{
-            echo "<script type='text/javascript'>alert('Invalid Login Credentials')</script>";
+            echo "Invalid Login Credentials";
             	
           }
-
       }
-
 ?>
 
 <!DOCTYPE html >
@@ -31,7 +29,7 @@ if(isset($_POST['username']) && isset($_POST['password'])){
 
 </head>
 <body>
-<form method="POST"  action= "">
+<form method="POST" action="" >
 username:<input type="text" name="username"/>
 password:<input type="password" name="password"/>
 <input type="submit" value="login"/>

@@ -12,8 +12,7 @@ if(isset($_POST['username']) && isset($_POST['password'])){
       $result = $stmt->fetch(PDO::FETCH_ASSOC);
       echo var_export($result, true);
       if($result['pin'] == $userpwd){
-            echo $result['username'] . ", ";
-            echo "Login Credentials verified";
+            echo "<br>Welcome, " . $result['username'];
 
       }else{
             echo "Invalid Login Credentials";

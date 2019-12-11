@@ -10,11 +10,12 @@
 include_once("header.php");
 include_once("functions.php");
 ?>
-
-      <ul> 
-	      <br><li> <a href="logout.php">Logout-><?php echo $_SESSION['user']['name'];?></a> </li>     
-        <br><li> <a href="homePage.php">Transactions</a> </li>
-        <br><li> <a href="newacc.php">Create Account </a> </li>
+ Welcome, <?php echo $_SESSION['user']['name'];?>
+ <br></br> 
+       <a href="logout.php">Logout</a> &nbsp | &nbsp    
+       <a href="account.php">Home</a>  &nbsp  | &nbsp
+        <a href="About.php">About Us</a> &nbsp |
+        <a href="contact.php">Contact</a>
       </ul>
 </body>
 

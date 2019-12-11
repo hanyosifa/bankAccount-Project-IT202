@@ -15,11 +15,13 @@ input { border: 1px solid black; }
 
 <body>
  Hello, <?php echo $_SESSION['user']['name'];?>
- <br>What do like to do today! </br> 
+ <br></br> 
 <!-- Add dropdown element (something specific to your project) -->
 	      <a href="https://web.njit.edu/~mb784/IT-202/myProject/transaction.php?type=deposit">Deposit</a> |
         <a href="https://web.njit.edu/~mb784/IT-202/myProject/transaction.php?type=withdraw">Withdraw</a> |
-        <a href="https://web.njit.edu/~mb784/IT-202/myProject/transaction.php?type=transfer">Transfer</a>
+        <a href="https://web.njit.edu/~mb784/IT-202/myProject/transaction.php?type=transfer">Transfer</a> |
+        <a href="About.php">Statements</a> &nbsp |
+        <a href="contact.php">Open New Account</a>
 
 </body>
 

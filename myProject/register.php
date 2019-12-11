@@ -24,6 +24,9 @@ username:<input type="text" name="username"/>
 password:<input type="password" name="password"/>
 <input type="password" name="confirm"/>
 <input type="submit" value="Register"/>
+<p>
+  Already have account? <a href="login.php">Sign in</a>
+</p>
 </form>
 </body>
 </html>

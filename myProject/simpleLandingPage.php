@@ -18,7 +18,7 @@ $(document).ready(function(){
   			//?page   <- GET variable
   			//#page   <-inline link/scroll to
   			//page.php <-relative link to separate page
-  			ele.attr("href", "?page=" + item);
+  			ele.attr("href", "?page=homePage.php" + item);
   			ele.text(item);
   			ul.append($("<li>").append(ele[0]));
   

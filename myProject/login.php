@@ -21,7 +21,7 @@ if(isset($_POST['username']) && isset($_POST['password'])){
             $_SESSION['user'] = $user;
             echo var_export($user, true);
             echo var_export($_SESSION, true);          
-            header("Location: dashboard.php");
+            header("Location: landingPage.php");
 
       }else{
             echo "Invalid Login Credentials";

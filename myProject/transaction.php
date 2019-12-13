@@ -49,16 +49,16 @@ function do_bank_action($account1, $account2, $amountChange, $type){
 ?>
 
 <form method="POST">
-  	<input type="text" name="account1" placeholder="Account Number">
-  	<!-- If our sample is a transfer show other account field-->
-  	<?php if($_GET['type'] == 'transfer') : ?>
-  	<input type="text" name="account2" placeholder="Other Account Number">
-  	<?php endif; ?>
-  
-  	<input type="number" name="amount" placeholder="$0.00"/>
-  	<input type="hidden" name="type" value="<?php echo $_GET['type'];?>"/>
-  	<!--Based on sample type change the submit button display-->
-  	<input type="submit" value="Move Money"/>
+	<input type="text" name="account1" placeholder="Account Number">
+	<!-- If our sample is a transfer show other account field-->
+	<?php if($_GET['type'] == 'transfer') : ?>
+	<input type="text" name="account2" placeholder="Other Account Number">
+	<?php endif; ?>
+
+	<input type="number" name="amount" placeholder="$0.00"/>
+	<input type="hidden" name="type" value="<?php echo $_GET['type'];?>"/>
+	<!--Based on sample type change the submit button display-->
+	<input type="submit" value="Move Money"/>
 </form>
 
 
@@ -67,18 +67,19 @@ function do_bank_action($account1, $account2, $amountChange, $type){
 if(isset($_POST['type']) && isset($_POST['account1']) && isset($_POST['amount'])){
     	$type = $_POST['type'];
     	$amount = (int)$_POST['amount'];
-    	switch($type){
-      		case 'deposit':
-      			do_bank_action("000000000000", $_POST['account1'], ($amount * -1), $type);
-      			break;
-      		case 'withdraw':
-      			do_bank_action($_POST['account1'], "000000000000", ($amount * -1), $type);
-      			break;
-      		case 'transfer':
-      			do_bank_action($_POST['account1'], $_POST['account2'], ($amount * -1), $type);//TODO figure it out
-   			    break;
-        	    
-	}
+      $account = $_POST['account1'];
+      switch($type){
+            		case 'deposit':
+            			do_bank_action("000000000000", $_POST['account1'], ($amount * -1), $type);
+            			break;
+            		case 'withdraw':
+            			do_bank_action($_POST['account1'], "000000000000", ($amount * -1), $type);
+            			break;
+            		case 'transfer':
+            			do_bank_action($_POST['account1'], $_POST['account2'], ($amount * -1), $type);//TODO figure it out
+         			    break;
+      
+      	    }
 }
 
 ?>

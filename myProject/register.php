@@ -11,19 +11,30 @@ error_reporting(E_ALL);
 <head>
 <script>
 function validatePass(form){
-   let isOK = form.password.value == form.confirm.value;
-   if(!isOk){alert("Passwords don't match");}
-   return isOk;
+     var username = form.username.value;
+     var password = form.password.value;
+     var confirm = form.confirm.value;
+     if (username == "" || password == "" || confirm == ""){
+                alert("Please complete all of your information.");
+                return false;
+     }
+
+     let isOK = form.password.value == form.confirm.value;
+     if(!isOk){alert("Passwords don't match");}
+     return isOk;
 }
 
 </script>
 </head>
 <body>
 <form method="POST"  onsubmit="return validatePass(this);">
-username:<input type="text" name="username"/>
-password:<input type="password" name="password"/>
-<input type="password" name="confirm"/>
-<input type="submit" value="Register"/>
+   <label>Username</label>
+      <input type="text" name="username"/>
+   <label>Password</label>
+      <input type="password" name="password"/>
+   <label>Confirm password</label>
+    <input type="password" name="confirm"/>
+    <input type="submit" value="Register"/>
 <p>
   Already have account? <a href="login.php">Sign in</a>
 </p>
